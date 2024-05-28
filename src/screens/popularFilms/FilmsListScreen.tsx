@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { FilmResponse } from './types'
@@ -20,13 +20,32 @@ export default function FilmsListScreen() {
         }
     })
 
-    console.log(data?.results);
+    const numberOfFilms:number = data?.results?.length ?? 0;
 
   return (
-    <View>
-      <Text>FilmsListScreen</Text>
+    <View style={styles.container}>
+      <View style={styles.title}>
+        <Text style={styles.titleText}>{numberOfFilms} {numberOfFilms > 1 ? "videos" : "video"}</Text>
+        <Pressable><Text style={styles.titleText}>Filter</Text></Pressable>
+      </View>
+      <FlatList
+        data={data?.results}
+        renderItem={({item}) => <Text>{item.title}</Text>}
+      />
     </View>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container:{flex:1,backgroundColor:"black"},
+
+  title:{
+    flexDirection: "row",
+    justifyContent:"space-between",
+    padding:20,
+  },
+  titleText:{
+    color:"lightgray",
+    fontSize:18
+  }
+})
