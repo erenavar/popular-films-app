@@ -2,6 +2,7 @@ import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { FilmResponse } from './types'
+import FilmCard from '../../components/FilmCard'
 
 export default function FilmsListScreen() {
 
@@ -32,6 +33,7 @@ export default function FilmsListScreen() {
         data={data?.results}
         renderItem={({item}) => <Text>{item.title}</Text>}
       />
+   
     </View>
   )
 }
