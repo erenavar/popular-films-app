@@ -27,11 +27,13 @@ export default function FilmsListScreen() {
     <View style={styles.container}>
       <View style={styles.title}>
         <Text style={styles.titleText}>{numberOfFilms} {numberOfFilms > 1 ? "videos" : "video"}</Text>
-        <Pressable><Text style={styles.titleText}>Filter</Text></Pressable>
+        <Pressable style={styles.filterButton}><Text style={styles.filterText}>Filter</Text></Pressable>
       </View>
+
       <FlatList
         data={data?.results}
-        renderItem={({item}) => <Text>{item.title}</Text>}
+        renderItem={({item}) => <FilmCard title={item.title} img={item.poster_path} year={item.release_date}/>}
+
       />
    
     </View>
@@ -44,10 +46,24 @@ const styles = StyleSheet.create({
   title:{
     flexDirection: "row",
     justifyContent:"space-between",
+    alignItems:"center",
     padding:20,
   },
   titleText:{
     color:"lightgray",
     fontSize:18
+  },
+  filterButton: {
+    backgroundColor:"gray",
+    padding: 10,
+    borderRadius: 20,
+    width:"30%",
+    justifyContent:"center",
+    alignItems:"center"
+  },
+  filterText: {
+    color:"white",
+    fontSize:18,
+    fontWeight:"bold"
   }
 })
