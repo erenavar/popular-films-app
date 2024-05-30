@@ -1,5 +1,6 @@
 import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import { FontAwesome5 } from '@expo/vector-icons';
+import AntDesign from "@expo/vector-icons/AntDesign";
 import moment from "moment";
 
 
@@ -16,7 +17,18 @@ export default function FilmCard(props: Props) {
         <ImageBackground
           style={styles.image}
           source={{ uri: "https://image.tmdb.org/t/p/w500/" + props.img }}
-        />
+        >
+          {/* 
+          <Image
+            source={require("../../assets/images/1.png")}
+            style={{ height: 150, width: 100 }}
+          /> */}
+          <View style={styles.overlayImage}>
+            <AntDesign name="play" color={"white"} size={40} />
+          </View>
+
+
+        </ImageBackground>
         <View style={styles.highlights}>
           <Text numberOfLines={4} style={styles.filmName}>{props.title}</Text>
           <Text style={styles.year}>{moment(props.year).format("YYYY")} </Text>
@@ -37,7 +49,7 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 150,
-    width: 100,
+    width: 130,
   },
   highlights: {
     flexShrink: 1,
@@ -55,5 +67,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     letterSpacing: 2
+  },
+  overlayImage: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    justifyContent: "flex-end",
+    alignItems: "flex-start",
+    paddingBottom: "10%",
+    paddingLeft: "10%",
+
+
   }
 });
