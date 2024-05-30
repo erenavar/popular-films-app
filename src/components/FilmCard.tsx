@@ -1,5 +1,7 @@
-import { Image, StyleSheet, Text, View } from "react-native";
-import React, { FC } from "react";
+import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
+import { FontAwesome5 } from '@expo/vector-icons';
+import moment from "moment";
+
 
 interface Props {
   title: string;
@@ -11,14 +13,15 @@ export default function FilmCard(props: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.dataWrapper}>
-        <Image
+        <ImageBackground
           style={styles.image}
           source={{ uri: "https://image.tmdb.org/t/p/w500/" + props.img }}
         />
         <View style={styles.highlights}>
           <Text numberOfLines={4} style={styles.filmName}>{props.title}</Text>
-          <Text style={styles.year}>{props.year}</Text>
+          <Text style={styles.year}>{moment(props.year).format("YYYY")} </Text>
         </View>
+        <FontAwesome5 style={{ marginLeft: "15%" }} name="angle-right" size={24} color="gray" />
       </View>
     </View>
   );
@@ -34,7 +37,7 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 150,
-    width: 150,
+    width: 100,
   },
   highlights: {
     flexShrink: 1,
