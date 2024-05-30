@@ -3,10 +3,11 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { FilmResponse } from './types'
 import FilmCard from '../../components/FilmCard'
+import { useNavigation } from '@react-navigation/native'
 
 export default function FilmsListScreen() {
 
-
+  const navigation = useNavigation<string>();
   const { data } = useQuery<FilmResponse>({
     queryKey: ['populerFilms'],
     queryFn: async () => {
@@ -14,7 +15,7 @@ export default function FilmsListScreen() {
         method: "GET",
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOTliM2U2OGY5YzQ0OGRjNDljY2JmMDEzMWI5N2Y0OCIsInN1YiI6IjY2NGNlZjhmYmY3YmFlZWU3Y2NkZDQ2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WHSBp9dcu_icb7MBwIRg5D6Dbx7uYNyq-Bs68tBTZE4'
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2JjYTk2YzZiYThiMmNlY2VhN2VkMTMxYmIwMDNiMiIsInN1YiI6IjY2NGNlZjhmYmY3YmFlZWU3Y2NkZDQ2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.q6K6tLBC9XXO68iAxri8_Z1oBfTWRRwolmvuVuSyk1M'
         }
       })
       return await response.json();
@@ -29,13 +30,14 @@ export default function FilmsListScreen() {
         <Text style={styles.titleText}>{numberOfFilms} {numberOfFilms > 1 ? "videos" : "video"}</Text>
         <Pressable style={styles.filterButton}><Text style={styles.filterText}>Filter</Text></Pressable>
       </View>
-
-
       <FlatList
         data={data?.results}
-        renderItem={({ item }) => <FilmCard title={item.title} img={item.poster_path} year={item.release_date} />}
+        renderItem={({ item }) => (
+          <Pressable onPress={() => navigation.navigate("Details", { id: item.id })}>
+            <FilmCard title={item.title} img={item.poster_path} year={item.release_date} />
+          </Pressable>
+        )}
       />
-
     </View>
   )
 }
