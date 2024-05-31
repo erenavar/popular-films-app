@@ -3,6 +3,7 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RouteStackParamList } from '../../navigation /MainNavigation';
+import { defineLocale } from 'moment';
 
 interface Params {
   id: number
@@ -34,25 +35,27 @@ export default function DetailsScreen({ route, navigation }: IProps) {
   })
 
 
-  console.log(data)
-  console.log(`https://image.tmdb.org/t/p/w500${data?.poster_path}`)
+  // console.log(data)
+  // console.log(`https://image.tmdb.org/t/p/w500${data?.poster_path}`)
 
   return (
     <View style={styles.container}>
       {isPending ?
         <ActivityIndicator /> :
-        <View>
-          <ImageBackground
-            style={styles.image}
-            source={{ uri: `https://image.tmdb.org/t/p/w500${data.poster_path}` }}
-          >
-            <Image
-              style={styles.transparentLayer}
-              source={require("../../../assets/images/1.png")}
-            />
-          </ImageBackground>
-          <Text>Button</Text>
-        </View>
+        <ImageBackground
+          resizeMode="stretch"
+          style={styles.image}
+          source={{ uri: `https://image.tmdb.org/t/p/w500${data.poster_path}` }}
+        >
+
+          <Text style={styles.filmName} numberOfLines={2}>{data.title}</Text>
+          <Image
+            style={styles.transparentLayer}
+            source={require("../../../assets/images/1.png")}
+          />
+
+
+        </ImageBackground>
 
       }
     </View>
@@ -64,11 +67,28 @@ const styles = StyleSheet.create({
     flex: 1
   },
   image: {
-    width: width,
-    height: width
+    height: width,
+    width: width
   },
   transparentLayer: {
+    position: 'absolute',
+    height: "100%",
     width: "100%",
-    height: "100%"
-  }
+    opacity: 0.7,
+    zIndex: 1
+
+  },
+  filmName: {
+    paddingTop: "70%",
+    color: "white",
+    fontSize: 30,
+    height: "100%",
+
+    fontWeight: "bold",
+
+
+
+
+  },
+
 })

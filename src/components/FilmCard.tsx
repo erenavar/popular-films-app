@@ -18,11 +18,6 @@ export default function FilmCard(props: Props) {
           style={styles.image}
           source={{ uri: "https://image.tmdb.org/t/p/w500/" + props.img }}
         >
-          {/* 
-          <Image
-            source={require("../../assets/images/1.png")}
-            style={{ height: 150, width: 100 }}
-          /> */}
           <View style={styles.overlayImage}>
             <AntDesign name="play" color={"white"} size={40} />
           </View>
@@ -75,7 +70,5 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     paddingBottom: "10%",
     paddingLeft: "10%",
-
-
   }
 });

@@ -3,16 +3,12 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { FilmResponse } from './types'
 import FilmCard from '../../components/FilmCard'
-import { useNavigation } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RouteStackParamList } from '../../navigation /MainNavigation'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 
 interface INavigation extends NativeStackScreenProps<RouteStackParamList, "FilmList"> { }
-
-
-const token = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzk5ZTk1MTlmNjU0MmEyNDE4ZjYzNzdkZTM5NmZkYSIsInN1YiI6IjY2NGNlZjhmYmY3YmFlZWU3Y2NkZDQ2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9JmYF_tq5R6dAQSEXgsfapOpdC3v3W03yAL9lc1d3tw'
 export default function FilmsListScreen({ navigation }: INavigation) {
 
   // const navigation = useNavigation<string>();
