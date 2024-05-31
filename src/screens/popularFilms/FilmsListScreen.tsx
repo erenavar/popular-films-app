@@ -15,7 +15,7 @@ export default function FilmsListScreen() {
         method: "GET",
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNjcxN2Q2N2UwMTUzMzMwNDI3ZDg4NTAwMzMwYzI1NyIsInN1YiI6IjY2NGNlZjhmYmY3YmFlZWU3Y2NkZDQ2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eIIFWzvWQcSR2yU6VStQV0wcuNNZRV8gnuTrP0vhzGc'
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2JjYTk2YzZiYThiMmNlY2VhN2VkMTMxYmIwMDNiMiIsInN1YiI6IjY2NGNlZjhmYmY3YmFlZWU3Y2NkZDQ2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.q6K6tLBC9XXO68iAxri8_Z1oBfTWRRwolmvuVuSyk1M'
         }
       })
       return await response.json();

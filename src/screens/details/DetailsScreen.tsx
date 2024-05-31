@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ImageBackground, Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useRoute } from '@react-navigation/native';
 import { useQuery } from '@tanstack/react-query';
@@ -13,7 +13,7 @@ export default function DetailsScreen({ route }) {
     queryKey: ['Details'],
     queryFn: async () => {
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${route.params.id}`, {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${route.params.id}/images`, {
           method: "GET",
           headers: {
             accept: "application/json",
@@ -29,12 +29,24 @@ export default function DetailsScreen({ route }) {
 
   })
 
+  //data.backdrops[0].file_path
+
+  const imageUrl = `https://image.tmdb.org/t/p/w500${data.backdrops[0].file_path}`;
+
 
   return (
-    <View>
-      <Text>{route.params.id}</Text>
+    <View style={styles.container}>
+      <ImageBackground
+        style={{ width: 200, height: 200 }}
+        source={{ uri: `https://image.tmdb.org/t/p/w500${data.backdrops[0].file_path}` }}
+
+      ></ImageBackground>
     </View>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+})
