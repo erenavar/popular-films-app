@@ -3,6 +3,7 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RouteStackParamList } from '../../navigation /MainNavigation';
+import { LinearGradient } from "expo-linear-gradient";
 import { defineLocale } from 'moment';
 
 interface Params {
@@ -48,11 +49,17 @@ export default function DetailsScreen({ route, navigation }: IProps) {
           source={{ uri: `https://image.tmdb.org/t/p/w500${data.poster_path}` }}
         >
 
+          <LinearGradient
+            colors={['transparent', 'rgba(0,0,0,1)']}
+            style={styles.transparentLayer}
+          />
           <Text style={styles.filmName} numberOfLines={2}>{data.title}</Text>
-          <Image
+
+          {/* <Image
             style={styles.transparentLayer}
             source={require("../../../assets/images/1.png")}
-          />
+          /> */}
+
 
 
         </ImageBackground>
@@ -72,11 +79,10 @@ const styles = StyleSheet.create({
   },
   transparentLayer: {
     position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
     height: "100%",
-    width: "100%",
-    opacity: 0.7,
-    zIndex: 1
-
   },
   filmName: {
     paddingTop: "70%",
