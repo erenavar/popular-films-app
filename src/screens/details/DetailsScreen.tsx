@@ -60,7 +60,7 @@ export default function DetailsScreen({ route, navigation }: IProps) {
               <Text style={styles.statusText}>Included in Prime</Text>
             </View>
           </LinearGradient>
-          <Button name="play" />
+          <Button name="Play" textColor="black" color="white" />
 
 
 
@@ -101,7 +101,9 @@ const styles = StyleSheet.create({
     color: "white",
     marginLeft: 15,
     fontSize: 20,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    letterSpacing: 2,
+
 
   }
 
