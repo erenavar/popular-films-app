@@ -1,10 +1,10 @@
-import { ImageBackground, Image, StyleSheet, Text, View, ActivityIndicator, Dimensions } from 'react-native'
+import { ImageBackground, StyleSheet, Text, View, ActivityIndicator, Dimensions } from 'react-native'
 import React from 'react'
 import { useQuery } from '@tanstack/react-query';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RouteStackParamList } from '../../navigation /MainNavigation';
 import { LinearGradient } from "expo-linear-gradient";
-import { defineLocale } from 'moment';
+import { AntDesign } from '@expo/vector-icons';
 
 interface Params {
   id: number
@@ -52,13 +52,14 @@ export default function DetailsScreen({ route, navigation }: IProps) {
           <LinearGradient
             colors={['transparent', 'rgba(0,0,0,1)']}
             style={styles.transparentLayer}
-          />
-          <Text style={styles.filmName} numberOfLines={2}>{data.title}</Text>
+          >
+            <Text style={styles.filmName} numberOfLines={2}>{data.title}</Text>
+            <View style={styles.status}>
+              <AntDesign name="checkcircle" size={20} color="#00acee" />
+              <Text style={styles.statusText}>Included in Prime</Text>
+            </View>
 
-          {/* <Image
-            style={styles.transparentLayer}
-            source={require("../../../assets/images/1.png")}
-          /> */}
+          </LinearGradient>
 
 
 
@@ -78,23 +79,28 @@ const styles = StyleSheet.create({
     width: width
   },
   transparentLayer: {
-    position: 'absolute',
+    justifyContent: "flex-end",
     left: 0,
     right: 0,
     bottom: 0,
     height: "100%",
   },
   filmName: {
-    paddingTop: "70%",
     color: "white",
     fontSize: 30,
-    height: "100%",
-
     fontWeight: "bold",
-
-
-
-
   },
+  status: {
+    flexDirection: "row",
+    marginVertical: 10,
+    alignItems: "center"
+  },
+  statusText: {
+    color: "white",
+    marginLeft: 15,
+    fontSize: 20,
+    fontWeight: "bold"
+
+  }
 
 })
