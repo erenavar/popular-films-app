@@ -6,6 +6,7 @@ import { RouteStackParamList } from '../../navigation /MainNavigation';
 import { LinearGradient } from "expo-linear-gradient";
 import { AntDesign } from '@expo/vector-icons';
 import Button from '../../components/Button';
+import FunctionalButton from '../../components/FunctionalButton';
 
 interface Params {
   id: number
@@ -36,10 +37,6 @@ export default function DetailsScreen({ route, navigation }: IProps) {
     }
   })
 
-
-  // console.log(data)
-  // console.log(`https://image.tmdb.org/t/p/w500${data?.poster_path}`)
-
   return (
     <View style={styles.container}>
       {isPending ?
@@ -62,6 +59,13 @@ export default function DetailsScreen({ route, navigation }: IProps) {
           </LinearGradient>
           <Button text="Play" textColor="black" color="white" symbolName="controller-play" symbolColor="black" />
           <Button text="Download" textColor="white" color="#33363d" symbolName="download" symbolColor="white" />
+          <View style={styles.funcButContainer}>
+            <FunctionalButton title="Fragman" />
+            <FunctionalButton title="Watchlist" />
+            <FunctionalButton title="Like" />
+            <FunctionalButton title="Unlike" />
+            <FunctionalButton title="Share" />
+          </View>
 
 
 
@@ -106,6 +110,9 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
 
 
+  },
+  funcButContainer: {
+    flexDirection: "row"
   }
 
 })
