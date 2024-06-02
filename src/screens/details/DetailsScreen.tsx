@@ -5,6 +5,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RouteStackParamList } from '../../navigation /MainNavigation';
 import { LinearGradient } from "expo-linear-gradient";
 import { AntDesign } from '@expo/vector-icons';
+import Button from '../../components/Button';
 
 interface Params {
   id: number
@@ -58,8 +59,8 @@ export default function DetailsScreen({ route, navigation }: IProps) {
               <AntDesign name="checkcircle" size={20} color="#00acee" />
               <Text style={styles.statusText}>Included in Prime</Text>
             </View>
-
           </LinearGradient>
+          <Button name="play" />
 
 
 
@@ -72,7 +73,8 @@ export default function DetailsScreen({ route, navigation }: IProps) {
 const width = Dimensions.get("window").width
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: "black"
   },
   image: {
     height: width,
