@@ -2,9 +2,11 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { Entypo } from '@expo/vector-icons';
 
 interface IProps {
-    name: string,
+    text: string,
     color: string,
-    textColor: string
+    textColor: string,
+    symbolName: string,
+    symbolColor: string
 }
 
 export default function Button(props: IProps) {
@@ -12,8 +14,8 @@ export default function Button(props: IProps) {
     return (
         <Pressable style={[styles.button, { backgroundColor: props.color }]} onPress={() => console.log("test")}>
             <View style={styles.buttonOrganizer}>
-                <Entypo name="controller-play" size={30} color="black" />
-                <Text style={[styles.buttonText, { color: props.textColor }]}>{props.name}</Text>
+                <Entypo name={props.symbolName} size={24} color={props.symbolColor} />
+                <Text style={[styles.buttonText, { color: props.textColor }]}>{props.text}</Text>
             </View>
         </Pressable>
     )
@@ -26,17 +28,17 @@ const styles = StyleSheet.create({
         height: "15%",
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 5
+        marginVertical: 5
     },
     buttonOrganizer: {
-        flexDirection: "row"
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 10
+
     },
     buttonText: {
         fontWeight: "bold",
         fontSize: 25,
         letterSpacing: 2,
-        marginLeft: 4
-
-
     }
 })

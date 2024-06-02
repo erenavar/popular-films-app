@@ -60,7 +60,8 @@ export default function DetailsScreen({ route, navigation }: IProps) {
               <Text style={styles.statusText}>Included in Prime</Text>
             </View>
           </LinearGradient>
-          <Button name="Play" textColor="black" color="white" />
+          <Button text="Play" textColor="black" color="white" symbolName="controller-play" symbolColor="black" />
+          <Button text="Download" textColor="white" color="#33363d" symbolName="download" symbolColor="white" />
 
 
 
