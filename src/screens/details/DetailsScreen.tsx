@@ -60,17 +60,13 @@ export default function DetailsScreen({ route, navigation }: IProps) {
           <Button text="Play" textColor="black" color="white" symbolName="controller-play" symbolColor="black" />
           <Button text="Download" textColor="white" color="#33363d" symbolName="download" symbolColor="white" />
           <View style={styles.funcButContainer}>
-            <FunctionalButton title="Fragman" />
-            <FunctionalButton title="Watchlist" />
-            <FunctionalButton title="Like" />
-            <FunctionalButton title="Unlike" />
-            <FunctionalButton title="Share" />
+            <FunctionalButton title="Fragman" symbolName="film" />
+            <FunctionalButton title="Watchlist" symbolName="plus-square" />
+            <FunctionalButton title="Like" symbolName="thumbs-o-up" />
+            <FunctionalButton title="Unlike" symbolName="thumbs-o-down" />
+            <FunctionalButton title="Share" symbolName="share-alt" />
           </View>
-
-
-
         </ImageBackground>
-
       }
     </View>
   )
@@ -112,7 +108,9 @@ const styles = StyleSheet.create({
 
   },
   funcButContainer: {
-    flexDirection: "row"
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 30
   }
 
 })
