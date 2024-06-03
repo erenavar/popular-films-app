@@ -8,15 +8,13 @@ import { AntDesign } from '@expo/vector-icons';
 import Button from '../../components/Button';
 import FunctionalButton from '../../components/FunctionalButton';
 
-interface Params {
-  id: number
-}
+
 
 interface IProps extends NativeStackScreenProps<RouteStackParamList, "Details"> {
 
 }
 
-export default function DetailsScreen({ route, navigation }: IProps) {
+export default function DetailsScreen({ route }: IProps) {
   // export default function DetailsScreen: FC<IProps>({ route }:IProps) {
 
   const { data, isPending } = useQuery({
